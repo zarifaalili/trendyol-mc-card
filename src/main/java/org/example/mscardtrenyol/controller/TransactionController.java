@@ -1,0 +1,29 @@
+package org.example.mscardtrenyol.controller;
+
+import lombok.RequiredArgsConstructor;
+import org.example.mscardtrenyol.request.TransactionRequest;
+import org.example.mscardtrenyol.response.TransactionResponse;
+import org.example.mscardtrenyol.service.TransactionService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/v1/transaction")
+public class TransactionController {
+    private final TransactionService transactionService;
+
+    @PostMapping("/create")
+    public void createTransaction(@RequestBody TransactionRequest transactionRequest) {
+        transactionService.createTransaction(transactionRequest);
+    }
+
+    @GetMapping("/all/{receiver}")
+    public List<TransactionResponse> getAllTransactions(@PathVariable String receiver) {
+        return transactionService.getAllTransactions(receiver);
+    }
+
+
+
+}

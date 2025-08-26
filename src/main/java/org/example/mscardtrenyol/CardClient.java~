@@ -1,0 +1,13 @@
+package org.example.mscardtrenyol;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+@FeignClient(name = "card-service", url = "http://localhost:9994/api/cards")
+public interface CardClient {
+
+    @GetMapping("/validate/{cardNumber}")
+    Boolean validateCard(@PathVariable String cardNumber);
+
+}

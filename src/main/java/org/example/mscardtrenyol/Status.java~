@@ -1,0 +1,4 @@
+package org.example.mscardtrenyol;
+
+public enum Status {
+}

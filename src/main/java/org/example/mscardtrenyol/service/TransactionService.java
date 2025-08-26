@@ -1,0 +1,60 @@
+package org.example.mscardtrenyol.service;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.example.mscardtrenyol.entity.PaymentTransaction;
+import org.example.mscardtrenyol.exception.custom.NotFoundException;
+import org.example.mscardtrenyol.repository.TransactionRepository;
+import org.example.mscardtrenyol.request.TransactionRequest;
+import org.example.mscardtrenyol.response.TransactionResponse;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+@RequiredArgsConstructor
+@Slf4j
+public class TransactionService {
+
+    private final TransactionRepository transactionRepository;
+
+    public void createTransaction(TransactionRequest transactionRequest) {
+
+        var paymentTransaction = PaymentTransaction.builder()
+                .transactionId(transactionRequest.getTransactionId())
+                .amount(transactionRequest.getAmount())
+                .currency(transactionRequest.getCurrency())
+                .status(transactionRequest.getStatus())
+                .transactionDate(transactionRequest.getTransactionDate())
+                .providerResponse(transactionRequest.getProviderResponse())
+                .sender(transactionRequest.getSender())
+                .receiver(transactionRequest.getReceiver())
+                .build();
+        transactionRepository.save(paymentTransaction);
+    }
+
+
+    public List<TransactionResponse> getAllTransactions(String receiver) {
+        log.info("Getting all transactions");
+        var tarnsactions = transactionRepository.findByReceiver(receiver);
+        if (tarnsactions.isEmpty()) {
+            throw new NotFoundException("No transactions found");
+        }
+        var response = tarnsactions.stream().map(transaction -> TransactionResponse.builder()
+                .amount(transaction.getAmount())
+                .currency(transaction.getCurrency())
+                .status(transaction.getStatus())
+                .transactionDate(transaction.getTransactionDate())
+                .providerResponse(transaction.getProviderResponse())
+                .sender(transaction.getSender())
+                .receiver(transaction.getReceiver())
+                .build()).toList();
+        return response;
+
+    }
+
+//    public List<TransactionResponse> getTransactionBy
+
+
+
+}

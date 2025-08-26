@@ -1,0 +1,51 @@
+package org.example.mscardtrenyol.controller;
+
+import lombok.RequiredArgsConstructor;
+import org.example.mscardtrenyol.service.CardService;
+import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
+
+@RestController
+@RequestMapping("/v1/card")
+@RequiredArgsConstructor
+public class CardController {
+
+    private final CardService cardService;
+
+    @GetMapping("/validate/{cardNumber}/{holderName}")
+    public Boolean validateCard(@PathVariable String cardNumber, @PathVariable String holderName) {
+        return cardService.validateCard(cardNumber, holderName);
+    }
+
+    @GetMapping("/validate/{cardNumber}")
+    public Boolean simplevalidateCard(@PathVariable String cardNumber) {
+        return cardService.simpleValidateCard(cardNumber);
+    }
+
+    @GetMapping("/{cardNumber}/holdername")
+    public String getHolderName(@PathVariable String cardNumber) {
+        return cardService.getHolderName(cardNumber);
+    }
+
+    @PostMapping("/transfer/{cardNumber}/{cardNumber2}/{amount}")
+    public String transfer(@PathVariable String cardNumber,@PathVariable String cardNumber2, @PathVariable BigDecimal amount) {
+        return cardService.transfer(cardNumber, cardNumber2, amount);
+
+    }
+
+    @GetMapping("/balance/{cardNumber}")
+    public BigDecimal getBalance(@PathVariable String cardNumber) {
+        return cardService.getBalance(cardNumber);
+    }
+
+
+    @PostMapping("/balance/{cardNumber}/{amount}")
+    public void addBalance(@PathVariable String cardNumber,@PathVariable BigDecimal amount) {
+        cardService.addBalance(cardNumber, amount);
+    }
+
+
+
+}
+
