@@ -20,6 +20,7 @@ public class Email {
     private Long id;
     private String email;
     private LocalDateTime createdAt;
+    @Enumerated(EnumType.STRING)
     private Status status;
 
 

@@ -22,5 +22,5 @@ public class Email {
     private LocalDateTime createdAt;
     private Status status;
 
- 
+
 }
