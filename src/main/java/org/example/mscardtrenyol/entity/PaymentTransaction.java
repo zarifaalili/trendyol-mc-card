@@ -3,8 +3,8 @@ package org.example.mscardtrenyol.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.example.mscardtrenyol.enums.Currency;
-import org.example.mscardtrenyol.enums.Status;
+import org.example.mscardtrenyol.model.enums.Status;
+import org.example.mscardtrenyol.model.enums.Currency;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

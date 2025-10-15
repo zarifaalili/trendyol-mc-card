@@ -1,6 +1,6 @@
-package org.example.mscardtrenyol.enums;
+package org.example.mscardtrenyol.model.enums;
 
-public enum Status {
+public enum CardStatus {
     ACTIVE,
     BLOCKED,
     DRAFT,

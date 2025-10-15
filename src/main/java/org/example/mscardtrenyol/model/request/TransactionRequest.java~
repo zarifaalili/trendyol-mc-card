@@ -1,10 +1,10 @@
-package org.example.mscardtrenyol.request;
+package org.example.mscardtrenyol.model.request;
 
-import jakarta.persistence.*;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.Data;
-import org.example.mscardtrenyol.entity.Card;
-import org.example.mscardtrenyol.enums.Currency;
-import org.example.mscardtrenyol.enums.Status;
+import org.example.mscardtrenyol.model.enums.Status;
+import org.example.mscardtrenyol.model.enums.Currency;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -19,7 +19,6 @@ public class TransactionRequest {
     @Enumerated(EnumType.STRING)
     private Currency currency;
 
-    @Enumerated(EnumType.STRING)
     private Status status;
 
     private LocalDateTime transactionDate;

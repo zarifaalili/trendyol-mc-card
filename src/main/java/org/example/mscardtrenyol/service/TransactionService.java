@@ -5,8 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.mscardtrenyol.entity.PaymentTransaction;
 import org.example.mscardtrenyol.exception.custom.NotFoundException;
 import org.example.mscardtrenyol.repository.TransactionRepository;
-import org.example.mscardtrenyol.request.TransactionRequest;
-import org.example.mscardtrenyol.response.TransactionResponse;
+import org.example.mscardtrenyol.model.request.TransactionRequest;
+import org.example.mscardtrenyol.model.response.TransactionResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

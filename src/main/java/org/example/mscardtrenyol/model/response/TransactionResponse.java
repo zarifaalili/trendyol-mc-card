@@ -1,11 +1,9 @@
-package org.example.mscardtrenyol.response;
+package org.example.mscardtrenyol.model.response;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import lombok.Builder;
 import lombok.Data;
-import org.example.mscardtrenyol.enums.Currency;
-import org.example.mscardtrenyol.enums.Status;
+import org.example.mscardtrenyol.model.enums.Currency;
+import org.example.mscardtrenyol.model.enums.Status;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -16,10 +14,8 @@ public class TransactionResponse {
 
     private BigDecimal amount;
 
-    @Enumerated(EnumType.STRING)
     private Currency currency;
 
-    @Enumerated(EnumType.STRING)
     private Status status;
 
     private LocalDateTime transactionDate;

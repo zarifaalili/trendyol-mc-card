@@ -1,7 +1,7 @@
 package org.example.mscardtrenyol.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.mscardtrenyol.enums.Status;
+import org.example.mscardtrenyol.model.enums.Status;
 import org.example.mscardtrenyol.repository.EmailRepository;
 import org.springframework.stereotype.Service;
 

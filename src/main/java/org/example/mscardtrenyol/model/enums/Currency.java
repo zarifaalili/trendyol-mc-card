@@ -1,4 +1,4 @@
-package org.example.mscardtrenyol.enums;
+package org.example.mscardtrenyol.model.enums;
 
 public enum Currency {
     AZN,
